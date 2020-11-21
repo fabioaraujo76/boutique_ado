@@ -21,7 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+if 'SECRET_KEY' in os.environ:
+    SECRET_KEY = os.environ.get('SECRET_KEY', '')
+else:
+    SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -177,6 +180,17 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
-STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
-STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
-STRIPE_WH_SECRET = config('STRIPE_WH_SECRET')
+if 'STRIPE_PUBLIC_KEY' in os.environ:
+    STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
+else:
+    STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
+
+if 'STRIPE_SECRET_KEY' in os.environ:
+    STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
+else:
+    STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
+
+if 'STRIPE_WH_SECRET' in os.environ:
+    STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
+else:
+    STRIPE_WH_SECRET = config('STRIPE_WH_SECRET')
