@@ -190,7 +190,7 @@ if 'STRIPE_SECRET_KEY' in os.environ:
 else:
     STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 
-if 'STRIPE_WH_SECRET' in os.environ:
-    STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
-else:
-    STRIPE_WH_SECRET = config('STRIPE_WH_SECRET')
+# if 'STRIPE_WH_SECRET' in os.environ:
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
+# else:
+#     STRIPE_WH_SECRET = config('STRIPE_WH_SECRET')
