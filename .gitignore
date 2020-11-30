@@ -105,8 +105,8 @@ celerybeat.pid
 
 # Environments
 .env
-env.py
 .venv
+env.*
 env/
 venv/
 ENV/
