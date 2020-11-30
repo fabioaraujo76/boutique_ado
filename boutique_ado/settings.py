@@ -9,9 +9,10 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-from decouple import config
 import os
 import dj_database_url
+if os.path.exists("env.py"):
+      import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -21,17 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-if 'SECRET_KEY' in os.environ:
-    SECRET_KEY = os.environ.get('SECRET_KEY', '')
-else:
-    SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['boutiqueado.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['boutiqueado.herokuapp.com', 'localhost', '9df7b045771f.ngrok.io']
 
 
 # Application definition
@@ -182,17 +179,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 FREE_DELIVERY_THRESHOLD = 50
 STANDARD_DELIVERY_PERCENTAGE = 10
 STRIPE_CURRENCY = 'usd'
-if 'STRIPE_PUBLIC_KEY' in os.environ:
-    STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY', '')
-else:
-    STRIPE_PUBLIC_KEY = config('STRIPE_PUBLIC_KEY')
-
-if 'STRIPE_SECRET_KEY' in os.environ:
-    STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', '')
-else:
-    STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
-
-if 'STRIPE_WH_SECRET' in os.environ:
-    STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET', '')
-else:
-    STRIPE_WH_SECRET = config('STRIPE_WH_SECRET')
+STRIPE_PUBLIC_KEY = os.environ.get('STRIPE_PUBLIC_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_WH_SECRET = os.environ.get('STRIPE_WH_SECRET')
