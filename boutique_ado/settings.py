@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = 'DEVELOPMENT' in os.environ
 DEBUG = True
 
-ALLOWED_HOSTS = ['boutiqueado.herokuapp.com', 'localhost', '9df7b045771f.ngrok.io']
+ALLOWED_HOSTS = ['boutiqueado.herokuapp.com', 'localhost', '5219ae9aec99.ngrok.io', '127.0.0.1']
 
 
 # Application definition
